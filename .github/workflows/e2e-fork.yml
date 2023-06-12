@@ -26,7 +26,9 @@ jobs:
         env:
           TEST_EXCLUSIONS: "TestInterTxTestSuite,TestIncentivizedInterTxTestSuite,TestUpgradeTestSuite"
 
-  e2e:
+  # e2e-fork runs the e2e tests directly by using a matrix strategy. Skipping this job results in the
+  # e2e tests being marked as skipped in the PR status.
+  e2e-fork:
     env:
       CHAIN_A_TAG: latest
       CHAIN_B_TAG: latest

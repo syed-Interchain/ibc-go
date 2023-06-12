@@ -57,7 +57,9 @@ jobs:
                 fi
             done
 
-    e2e:
+    # e2e-generation generates the e2e tests for the non-forked PRs. It does so by using the 
+    # e2e-test-workflow-call.yml. Each test runs in its own job independent from this one.
+    e2e-generation:
       # we will be running this job if the PR has not yet been marked for review, and we push additional changes.
       # we skip the job in this case.
       if: ${{ !github.event.pull_request.draft && !github.event.pull_request.head.repo.fork && github.actor != 'dependabot[bot]' }}
